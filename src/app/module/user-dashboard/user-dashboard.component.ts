@@ -14,6 +14,7 @@ export class UserDashboardComponent implements OnInit {
     this.userService
       .appliedJobs(Number(localStorage.getItem('id')))
       .subscribe((d) => {
+        console.log(d);
         this.data = d;
       });
   }

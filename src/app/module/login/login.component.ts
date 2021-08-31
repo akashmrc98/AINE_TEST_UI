@@ -38,13 +38,13 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/', 'job-catalog']);
 
             if (data.userType === 'Employer' && data.profileComplete)
-              this.router.navigate(['recuiter-dashboard']);
+              this.router.navigate(['/', 'recuiter-dashboard']);
 
             if (data.userType === 'Employee' && !data.profileComplete)
               this.router.navigate(['/', 'user']);
 
             if (data.userType === 'Employer' && !data.profileComplete)
-              this.router.navigate(['recuiter']);
+              this.router.navigate(['/', 'recuiter']);
           }
         },
         (error) => {
