@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik";
+}
+
+.recuiter-form {
+  display: flex;
+  margin: 1em;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
+  box-shadow: 0px 5px 30px rgba($color: #325288, $alpha: 0.15);
+  border-radius: 2vw;
+}
+
+.button-grouper {
+  display: flex;
+  column-gap: 2%;
+}
+
+input {
+  width: 100%;
+}
+
+button {
+  width: 50%;
+  height: 3.25em;
+  align-self: flex-start;
+  margin-bottom: 0.75em;
+}
+
+.max-hint p {
+  display: none;
+}
+
+.max-hint p:first-child {
+  display: block;
+}
+
+.error {
+  font-size: 0.7rem;
+  color: red;
+  opacity: 0.75;
+}
+
+@media only screen and (min-width: 1366px) {
+  .container {
+    margin: 3em 40em;
+  }
+
+  .user-form {
+    border-radius: 1vh;
+  }
+}

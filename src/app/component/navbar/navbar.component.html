@@ -1,0 +1,14 @@
+<div class="navbar">
+  <div class="Home">
+    <img routerLink="/job-catalog" src="../../assets/icons/home.svg" />
+  </div>
+  <div class="catalog">
+    <img
+      [routerLink]="userType ? '/user-dashboard' : '/recuiter-dashboard'"
+      src="../../assets/icons/list.svg"
+    />
+  </div>
+  <div (click)="logout()" class="logout">
+    <img src="../../assets/icons/logout.svg" />
+  </div>
+</div>

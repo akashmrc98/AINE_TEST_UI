@@ -1,0 +1,103 @@
+<div *ngIf="data.length > 0">
+  <div *ngFor="let d of data; let i = index">
+    <mat-card class="custom-card">
+      <mat-card-header>
+        <mat-card-title> {{ d.title }} </mat-card-title>
+        <mat-card-subtitle>{{ d.company.company }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="flatten-wrapper">
+          <img src="../../assets/icons/breifcase.svg" />
+          <div>
+            <span *ngIf="d.experience.length > 1">
+              <span>{{ d.experience[0] }} Years</span> -
+              <span> {{ d.experience[1] }} Years</span>
+            </span>
+
+            <span *ngIf="d.experience.length === 1 && d.experience[0] === 0">
+              <span>Freshers</span>
+            </span>
+
+            <span *ngIf="d.experience.length === 1">
+              <span> / {{ d.experience[0] }} years</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="flatten-wrapper">
+          <img src="../../assets/icons/location.svg" />
+          <div>
+            <span *ngFor="let location of d.location; let k = index">
+              <span *ngIf="d.location.length - 1 !== k"> {{ location }}, </span>
+              <span *ngIf="d.location.length - 1 === k"> {{ location }}. </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="flatten-wrapper">
+          <img src="../../assets/icons/wallet.svg" />
+          <div>
+            <span *ngIf="d.ctc.length > 1">
+              <span>{{ d.ctc[0] }} LPA</span> -
+              <span> {{ d.ctc[1] }} LPA</span>
+            </span>
+
+            <span *ngIf="d.ctc.length === 1">
+              <span>{{ d.ctc[0] }} LPA</span>
+            </span>
+
+            <span *ngIf="d.ctc.length === 0">
+              <span>Not disclosed</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="flatten-wrapper">
+          <img src="../../assets/icons/skills.svg" />
+          <div>
+            <span *ngFor="let tags of d.job.skills; let k = index">
+              <span *ngIf="d.job.skills.length - 1 !== k">
+                {{ tags.skill }},
+              </span>
+              <span *ngIf="d.job.skills.length - 1 === k">
+                {{ tags.skill }}.
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="flatten-wrapper">
+          <img src="../../assets/icons/date.svg" />
+          {{ d.postedAt | timeFormatter }}
+        </div>
+      </mat-card-content>
+
+      <div class="actions">
+        <button
+          (click)="apply(d.id)"
+          *ngIf="isEmployee"
+          color="primary"
+          mat-raised-button
+        >
+          Apply
+        </button>
+        <button
+          *ngIf="isRecuiter"
+          color="primary"
+          mat-raised-button
+          (click)="applicants(d.id)"
+          class="applicants"
+        >
+          Applicants
+        </button>
+        <button
+          color="primary"
+          mat-raised-button
+          [routerLink]="['/', 'jobs', d.id]"
+        >
+          view
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+*,
+h2 {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik";
+}
+
+h2 {
+  text-align: center;
+  margin: 1rem;
+}
+
+.dashboard {
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  margin: 0.5rem;
+}
+
+mat-divider {
+  margin: 1rem 2rem;
+}

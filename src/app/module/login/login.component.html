@@ -1,0 +1,85 @@
+<p class="error-s" *ngIf="error">Invalid username or password.</p>
+
+<div class="login-form">
+  <form class="form-elements" [formGroup]="userLoginForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username" />
+      <mat-hint
+        class="max-hint"
+        *ngIf="
+          this.userLoginForm.get('username').dirty &&
+          this.userLoginForm.get('username').invalid
+        "
+      >
+        <p
+          *ngIf="this.userLoginForm.get('username').hasError('required')"
+          class="error"
+        >
+          *username required.
+        </p>
+
+        <p
+          *ngIf="this.userLoginForm.get('username').hasError('minlength')"
+          class="error"
+        >
+          *minimun length.
+        </p>
+
+        <p
+          *ngIf="this.userLoginForm.get('username').hasError('maxlength')"
+          class="error"
+        >
+          *maximum length.
+        </p>
+
+        <p
+          *ngIf="this.userLoginForm.get('username').hasError('pattern')"
+          class="error"
+        >
+          *invalid username.
+        </p>
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+
+      <mat-hint
+        class="max-hint"
+        *ngIf="
+          this.userLoginForm.get('password').dirty &&
+          this.userLoginForm.get('password').invalid
+        "
+      >
+        <p
+          *ngIf="this.userLoginForm.get('password').hasError('required')"
+          class="error"
+        >
+          *password required.
+        </p>
+
+        <p
+          *ngIf="this.userLoginForm.get('password').hasError('pattern')"
+          class="error"
+        >
+          *invalid password.
+        </p>
+      </mat-hint>
+    </mat-form-field>
+  </form>
+
+  <div class="button-grouper">
+    <button
+      [disabled]="userLoginForm.invalid"
+      (click)="login()"
+      mat-raised-button
+      color="primary"
+    >
+      Sign In
+    </button>
+
+    <button [routerLink]="['/', 'signup']" mat-raised-button>Sign Up</button>
+  </div>
+</div>

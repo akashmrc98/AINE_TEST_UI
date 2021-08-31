@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="dashboard">
+  <button routerLink="/job-post" mat-raised-button>Create new job post</button>
+</div>
+<mat-divider></mat-divider>
+
+<h2>Recent Postings</h2>
+
+<app-job-list
+  [data]="data"
+  [isRecuiter]="isRec"
+  [isEmployee]="isEmp"
+></app-job-list>

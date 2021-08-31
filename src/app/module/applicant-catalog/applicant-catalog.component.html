@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div *ngFor="let d of data; let i = index">
+  <div class="custom-card">
+    <div class="flatten-wrapper">
+      <img src="../../assets/icons/user.svg" />
+      <span>
+        {{ d.name }}
+      </span>
+    </div>
+    <div class="flatten-wrapper">
+      <img src="../../assets/icons/email.svg" />
+      <span>
+        {{ d.email }}
+      </span>
+    </div>
+    <div class="flatten-wrapper">
+      <img src="../../assets/icons/phone.svg" />
+      <span>
+        {{ d.phone }}
+      </span>
+    </div>
+
+    <div class="flatten-wrapper">
+      <img src="../../assets/icons/skills.svg" />
+
+      <div>
+        <span *ngFor="let tags of d.skills; let k = index">
+          <span *ngIf="d.skills.length - 1 !== k"> {{ tags.skill }}, </span>
+          <span *ngIf="d.skills.length - 1 === k"> {{ tags.skill }}. </span>
+        </span>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="custom-content">
+      <div class="job-headers">
+        <h2>Candidate Profile</h2>
+      </div>
+
+      <h3>About</h3>
+
+      <p>
+        {{ d.about }}
+      </p>
+
+      <div class="profile">
+        <div class="job-headers">
+          <h3>Eduction</h3>
+        </div>
+        <div>
+          <img src="../../assets/icons/dot.svg" />
+          <span *ngFor="let eductation of d.education">
+            {{ eductation.education }}
+          </span>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <a mat-raised-button (click)="download(d.resume.data)">Resume</a>
+    </div>
+  </div>
+</div>

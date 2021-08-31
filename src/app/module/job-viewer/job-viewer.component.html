@@ -1,0 +1,154 @@
+<app-navbar></app-navbar>
+<div class="custom-card">
+  <div class="custom-header">
+    <div class="custom-title">{{ job.title }}</div>
+    <div class="custom-subtitle">{{ job.company.company }}</div>
+
+    <div class="actions">
+      <button (click)="apply(job.id)" color="light" mat-raised-button>
+        Apply
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="navigator">
+  <button (click)="scroll(jobDetails)" mat-button>Job Details</button>
+  <button (click)="scroll(company)" mat-button>About Company</button>
+  <button (click)="scroll(recuiter)" mat-button>Recuiter</button>
+</div>
+
+<div #jobDetails class="custom-content">
+  <div class="job-headers">
+    <h3>Job Highlights</h3>
+    <p>{{ job.description }}</p>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="flatten-wrapper">
+    <img src="../../assets/icons/breifcase.svg" />
+    <div>
+      <span *ngIf="job.experience.length > 1">
+        <span>{{ job.experience[0] }} Years</span> -
+        <span> {{ job.experience[1] }} Years</span>
+      </span>
+
+      <span *ngIf="job.experience.length === 1 && job.experience[0] === 0">
+        <span>Freshers</span>
+      </span>
+
+      <span *ngIf="job.experience.length === 1">
+        <span> / {{ job.experience[0] }} years</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="flatten-wrapper">
+    <img src="../../assets/icons/user.svg" />
+    <div>{{ job.applicants.length }} applicants</div>
+  </div>
+
+  <div class="flatten-wrapper">
+    <img src="../../assets/icons/location.svg" />
+    <div>
+      <span *ngFor="let location of job.location; let k = index">
+        <span *ngIf="job.location.length - 1 !== k"> {{ location }}, </span>
+        <span *ngIf="job.location.length - 1 === k"> {{ location }}. </span>
+      </span>
+    </div>
+  </div>
+
+  <div class="flatten-wrapper">
+    <img src="../../assets/icons/wallet.svg" />
+    <div>
+      <span *ngIf="job.ctc.length > 1">
+        <span>{{ job.ctc[0] }} LPA</span> -
+        <span> {{ job.ctc[1] }} LPA</span>
+      </span>
+
+      <span *ngIf="job.ctc.length === 1">
+        <span>{{ job.ctc[0] }} LPA</span>
+      </span>
+
+      <span *ngIf="job.ctc.length === 0">
+        <span>Not disclosed</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="flatten-wrapper">
+    <img src="../../assets/icons/skills.svg" />
+    <div>
+      <span *ngFor="let tags of job.job.skills; let k = index">
+        <span *ngIf="job.job.skills.length - 1 !== k"> {{ tags.skill }}, </span>
+        <span *ngIf="job.job.skills.length - 1 === k"> {{ tags.skill }}. </span>
+      </span>
+    </div>
+  </div>
+
+  <div class="flatten-wrapper">
+    <img src="../../assets/icons/date.svg" />
+    {{ job.postedAt | timeFormatter }}
+  </div>
+</div>
+
+<div class="custom-content">
+  <div class="job-headers">
+    <h3>Job Description</h3>
+    <h4>Role & Responsiblities</h4>
+  </div>
+  <div>{{ job.job.responsibilities }}</div>
+
+  <mat-divider></mat-divider>
+
+  <div class="job-headers">
+    <h4>Candidate Profile</h4>
+  </div>
+
+  <div *ngFor="let eductation of job.job.education">
+    <div class="profile">
+      <img src="../../assets/icons/dot.svg" />
+      <div>
+        {{ eductation.education }}
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div *ngFor="let profile of job.job.profiles">
+    <div class="profile">
+      <img src="../../assets/icons/dot.svg" />
+      <div>
+        {{ profile.profilePerk }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div #company class="custom-content">
+  <div class="job-headers-2">
+    <h3>Company</h3>
+    <p>{{ job.company.company }}</p>
+    <h4>About</h4>
+    <p>{{ job.company.about }}</p>
+    <h4>Address</h4>
+    <p>{{ job.company.address }}</p>
+    <h4>Website</h4>
+    <p>{{ job.company.website }}</p>
+  </div>
+</div>
+
+<div #recuiter class="custom-content">
+  <div class="job-headers-2">
+    <h3>Recuiter</h3>
+    <p>{{ job.recuiter.name }}</p>
+    <h4>Role</h4>
+    <p>{{ job.recuiter.jobRole }}</p>
+    <h4>Contact</h4>
+    <div>{{ job.recuiter.phone }}</div>
+    <div>{{ job.recuiter.email }}</div>
+  </div>
+</div>
+
+<mat-divider></mat-divider>

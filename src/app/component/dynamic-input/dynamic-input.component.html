@@ -1,0 +1,31 @@
+<form class="input-form" [formGroup]="inputForm">
+  <mat-form-field appearance="outline">
+    <mat-label> {{ name }} </mat-label>
+    <textarea rows="3" matInput type="text" formControlName="input"></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.inputForm.get('input').dirty && this.inputForm.get('input').invalid
+      "
+    >
+      <p *ngIf="this.inputForm.get('input').hasError('required')" class="error">
+        *input required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="add()" color="accent">Add</button>
+
+  <div *ngIf="inputs.length > 0">
+    <mat-divider></mat-divider>
+    <div *ngFor="let i of inputs; let x = index">
+      <div class="input-data">
+        <p>{{ i }}</p>
+        <button color="accent" mat-raised-button (click)="remove(x)">
+          delete
+        </button>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+  </div>
+</form>

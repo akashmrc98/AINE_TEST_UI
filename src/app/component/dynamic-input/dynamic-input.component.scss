@@ -1,0 +1,27 @@
+.input-form {
+  display: flex;
+  margin: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
+  box-shadow: 0px 5px 30px rgba($color: #325288, $alpha: 0.15);
+  border-radius: 2vw;
+}
+
+.input-data {
+  display: flex;
+  margin: 0.5em;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5em;
+  border-radius: 2vw;
+  word-wrap: break-word;
+}
+
+button {
+  width: 20%;
+}
+
+mat-divider {
+  margin: 1rem 1rem;
+}

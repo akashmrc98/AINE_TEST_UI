@@ -1,0 +1,129 @@
+<form class="recuiter-form" [formGroup]="recuiterForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Full Name</mat-label>
+    <input matInput type="text" formControlName="name" />
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('name').dirty &&
+        this.recuiterForm.get('name').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('name').hasError('required')"
+        class="error"
+      >
+        *name required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Role</mat-label>
+    <input matInput type="text" formControlName="role" />
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('role').dirty &&
+        this.recuiterForm.get('role').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('role').hasError('required')"
+        class="error"
+      >
+        *role required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Comany</mat-label>
+    <input matInput type="text" formControlName="company" />
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('company').dirty &&
+        this.recuiterForm.get('company').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('company').hasError('required')"
+        class="error"
+      >
+        *company required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>About Company</mat-label>
+    <textarea
+      rows="4"
+      matInput
+      formControlName="about"
+      placeholder="About Company"
+    ></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('about').dirty &&
+        this.recuiterForm.get('about').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('about').hasError('required')"
+        class="error"
+      >
+        *company about required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Address</mat-label>
+    <textarea
+      rows="4"
+      formControlName="address"
+      matInput
+      placeholder="Address"
+    ></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('address').dirty &&
+        this.recuiterForm.get('address').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('address').hasError('required')"
+        class="error"
+      >
+        *Address required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Website</mat-label>
+    <input matInput type="text" formControlName="website" />
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('website').dirty &&
+        this.recuiterForm.get('website').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('website').hasError('required')"
+        class="error"
+      >
+        *website required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <button (click)="register()" mat-raised-button color="primary">
+    Register
+  </button>
+</form>

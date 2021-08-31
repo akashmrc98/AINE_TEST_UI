@@ -1,0 +1,162 @@
+<app-navbar></app-navbar>
+<form class="job-post-form" [formGroup]="recuiterForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <textarea rows="3" matInput type="text" formControlName="title"></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('title').dirty &&
+        this.recuiterForm.get('title').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('title').hasError('required')"
+        class="error"
+      >
+        *title required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <div class="wrapped-inputs">
+    <mat-form-field appearance="outline">
+      <mat-label>Min Experince</mat-label>
+      <input matInput type="number" formControlName="minExp" />
+      <mat-hint
+        class="max-hint"
+        *ngIf="
+          this.recuiterForm.get('minExp').dirty &&
+          this.recuiterForm.get('minExp').invalid
+        "
+      >
+        <p
+          *ngIf="this.recuiterForm.get('minExp').hasError('required')"
+          class="error"
+        >
+          *min experince required.
+        </p>
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Max Experince</mat-label>
+      <input matInput type="number" formControlName="maxExp" />
+      <mat-hint
+        class="max-hint"
+        *ngIf="
+          this.recuiterForm.get('maxExp').dirty &&
+          this.recuiterForm.get('maxExp').invalid
+        "
+      >
+        <p
+          *ngIf="this.recuiterForm.get('maxExp').hasError('required')"
+          class="error"
+        >
+          *Max Experince required.
+        </p>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="wrapped-inputs">
+    <mat-form-field appearance="outline">
+      <mat-label>Min CTC</mat-label>
+      <input matInput type="number" formControlName="minCtc" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Max CTC</mat-label>
+      <input matInput type="number" formControlName="maxCtc" />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea
+      rows="4"
+      matInput
+      formControlName="description"
+      placeholder="Description"
+    ></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('description').dirty &&
+        this.recuiterForm.get('description').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('responsibilites').hasError('required')"
+        class="error"
+      >
+        *Role & Responsiblities about required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Role</mat-label>
+    <input matInput type="text" formControlName="jobRole" />
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('jobRole').dirty &&
+        this.recuiterForm.get('jobRole').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('jobRole').hasError('required')"
+        class="error"
+      >
+        *job role required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Role & Responsiblities</mat-label>
+    <textarea
+      rows="4"
+      matInput
+      formControlName="responsibilites"
+      placeholder="About Company"
+    ></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('responsibilites').dirty &&
+        this.recuiterForm.get('responsibilites').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('responsibilites').hasError('required')"
+        class="error"
+      >
+        *Role & Responsiblities about required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+</form>
+
+<app-dynamic-input
+  (newItemsList)="getLocations($event)"
+  name="location"
+></app-dynamic-input>
+
+<app-dynamic-input
+  (newItemsList)="getProfiles($event)"
+  name="profile"
+></app-dynamic-input>
+<app-dynamic-input
+  (newItemsList)="getEducations($event)"
+  name="education"
+></app-dynamic-input>
+<app-dynamic-input
+  (newItemsList)="getSkills($event)"
+  name="skills"
+></app-dynamic-input>
+
+<div class="button-wrapper">
+  <button (click)="postData()" mat-raised-button color="primary">Post</button>
+</div>

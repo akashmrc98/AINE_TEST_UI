@@ -1,0 +1,89 @@
+<form
+  enctype="multipart/form-data"
+  class="recuiter-form"
+  [formGroup]="recuiterForm"
+>
+  <mat-form-field appearance="outline">
+    <mat-label>Full Name</mat-label>
+    <input matInput type="text" formControlName="name" />
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('name').dirty &&
+        this.recuiterForm.get('name').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('name').hasError('required')"
+        class="error"
+      >
+        *name required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Achivements</mat-label>
+    <textarea
+      rows="4"
+      matInput
+      formControlName="about"
+      placeholder="About Company"
+    ></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('about').dirty &&
+        this.recuiterForm.get('about').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('about').hasError('required')"
+        class="error"
+      >
+        *company about required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Others</mat-label>
+    <textarea
+      rows="4"
+      formControlName="others"
+      matInput
+      placeholder="Others"
+    ></textarea>
+    <mat-hint
+      class="max-hint"
+      *ngIf="
+        this.recuiterForm.get('others').dirty &&
+        this.recuiterForm.get('others').invalid
+      "
+    >
+      <p
+        *ngIf="this.recuiterForm.get('address').hasError('required')"
+        class="error"
+      >
+        *Address required.
+      </p>
+    </mat-hint>
+  </mat-form-field>
+
+  <input type="file" name="file" (change)="selectFile($event)" />
+</form>
+
+<app-dynamic-input
+  (newItemsList)="getEducations($event)"
+  name="education"
+></app-dynamic-input>
+<app-dynamic-input
+  (newItemsList)="getSkills($event)"
+  name="skills"
+></app-dynamic-input>
+
+<div class="center">
+  <button (click)="register()" mat-raised-button color="primary">
+    Register
+  </button>
+</div>
