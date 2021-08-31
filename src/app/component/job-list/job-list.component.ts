@@ -15,8 +15,25 @@ export class JobListComponent {
   @Input() isEmployee: boolean = true;
   @Input() data: JobCatalogModel[];
 
+  isApplied: boolean = false;
+  isError: boolean = false;
+
   apply(postId: number) {
-    this.jobService.applyForJob(postId).subscribe((res) => {});
+    this.jobService.applyForJob(postId).subscribe(
+      (res) => {
+        if (res) {
+          this.isApplied = true;
+          this.isError = false;
+        }
+      },
+      (error) => {
+        if (error) {
+          this.isApplied = false;
+          this.isError = true;
+        }
+      }
+    );
+    this.isApplied = true;
   }
 
   applicants(id) {

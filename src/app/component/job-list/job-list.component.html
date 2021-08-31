@@ -1,6 +1,16 @@
 <div *ngIf="data.length > 0">
   <div *ngFor="let d of data; let i = index">
     <mat-card class="custom-card">
+      <div class="msg" *ngIf="isApplied">
+        <p>Application has been sent!</p>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div class="msg" *ngIf="isError">
+        <p>User Already Applied for this post!</p>
+        <mat-divider></mat-divider>
+      </div>
+
       <mat-card-header>
         <mat-card-title> {{ d.title }} </mat-card-title>
         <mat-card-subtitle>{{ d.company.company }}</mat-card-subtitle>

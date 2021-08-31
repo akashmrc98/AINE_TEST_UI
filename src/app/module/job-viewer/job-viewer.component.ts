@@ -43,6 +43,7 @@ export class JobViewerComponent implements OnInit {
     },
   };
 
+  isApplied: boolean = false;
   ngOnInit(): void {
     this.route.params.subscribe((id) => {
       this.jobService.getJobById(id.id).subscribe((job) => {
@@ -51,10 +52,23 @@ export class JobViewerComponent implements OnInit {
     });
   }
 
+  isError: boolean = false;
+
   apply(id: number) {
-    this.jobService.applyForJob(id).subscribe((res) => {
-      console.log(res);
-    });
+    this.jobService.applyForJob(id).subscribe(
+      (res) => {
+        if (res) {
+          this.isApplied = true;
+          this.isError = false;
+        }
+      },
+      (error) => {
+        if (error) {
+          this.isApplied = false;
+          this.isError = true;
+        }
+      }
+    );
   }
 
   scroll(element: HTMLElement) {

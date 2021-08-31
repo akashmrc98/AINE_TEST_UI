@@ -18,6 +18,16 @@
   <button (click)="scroll(recuiter)" mat-button>Recuiter</button>
 </div>
 
+<div class="msg" *ngIf="isApplied">
+  <p>Application has been sent!</p>
+  <mat-divider></mat-divider>
+</div>
+
+<div class="msg" *ngIf="isError">
+  <p>User Already Applied for this post!</p>
+  <mat-divider></mat-divider>
+</div>
+
 <div #jobDetails class="custom-content">
   <div class="job-headers">
     <h3>Job Highlights</h3>
